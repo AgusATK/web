@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chefcitos - PanCakes Caseros</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo sin fondo 2.png" alt="Chefcito logo">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li>
+                    <a href="#" class="cart-btn">
+                        <img src="carrito.png" alt="Ícono de carrito">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="cart-panel">
+            <h2 style="text-align: center;">Carrito</h2>
+            <ul id="cart-items"></ul>
+            <button class="checkout-btn">Comprar</button>
+            <button class="clear-cart-btn">Vaciar carrito</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>CHEFCITOS</h1>
+            <p>Pancakes de avena 100% caseros y de calidad</p>
+        </section>
+
+        <section id="productos" class="section">
+            <h2 class="productos-titulo">Productos</h2>
+            <div class="product-container">
+                <div class="product-image">
+                    <img src="pancake producto.jpg" alt="Imagen del producto">
+                </div>
+                <div class="product-info">
+                    <h2>PanCakes de Avena</h2>
+                    <p>$700</p>
+                    <button class="add-to-cart-btn">Agregar al carrito</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="nosotros" class="section">
+            <div class="about-container">
+                <div class="about-text">
+                    <h2>Nuestra Historia</h2>
+                    <p>
+                        Chefcitos nació de una pasión compartida por el fútbol y el cuidado de nuestra alimentación.
+                        Somos un grupo de cuatro futbolistas provenientes de distintas localidades de Argentina:
+                        Feliciano, Reconquista, Corrientes y Paraná. Siendo deportistas, siempre hemos prestado
+                        especial atención a lo que comemos para mantenernos en forma y rendir al máximo en cada partido.
+                    </p>
+                    <p>
+                        Cada uno de nosotros vivió su propio camino lejos de casa, y aunque el fútbol nos unió,
+                        la distancia nos hacía extrañar mucho a nuestras familias. Yfrán, el único de nosotros
+                        que es de Paraná, siempre estuvo dispuesto a ayudarnos a sentirnos más cerca de casa,
+                        haciendo que la distancia fuese más llevadera. Nos hicimos grandes amigos, tanto dentro como fuera de la cancha.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="nosotros_2" class="section">
+            <div class="about-container">
+                <div class="about-text">
+                    <p>
+                        Con el tiempo, nos dimos cuenta de que la comida chatarra que se nos ofrecía en tantos lugares no era
+                        compatible con nuestro estilo de vida. De ahí nació la idea de crear Chefcitos: un producto que nos
+                        permitiría seguir cuidando nuestra alimentación sin renunciar al sabor ni a la comodidad. Queríamos
+                        una opción que fuera saludable y deliciosa al mismo tiempo, y así lo hicimos.
+                    </p>
+                    <p>
+                        ¿El nombre? Se lo debemos a Reyes. Mientras buscábamos cómo llamarnos, él sugirió "Chefcitos",
+                        y a todos nos pareció perfecto: un nombre cercano, con personalidad y que refleja nuestra esencia.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="integrantes.jpeg" alt="Nuestro equipo">
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="section">
+            <h2>Contactáte con nosotros via Instagram:</h2>
+            <p><a href="https://www.instagram.com/lukasmieress/" target="_blank">
+                <img src="ig.png" alt="Logo Instagram">Lukas Mieres 
+            </a><a href="https://www.instagram.com/ovando_antonioo/" target="_blank">
+                <img src="ig.png" alt="Logo Instagram">Antonio Ovando 
+            </a><a href="https://www.instagram.com/tizivreyes/" target="_blank">
+                <img src="ig.png" alt="Logo Instagram">Tiziano Reyes 
+            </a><a href="https://www.instagram.com/tobiasss_7/" target="_blank">
+                <img src="ig.png" alt="Logo Instagram">Tobias Yfran 
+            </a></p>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var header = document.querySelector('header');
+            var sections = document.querySelectorAll('section');
+    
+            function updateHeaderBackground() {
+                var scrollPosition = window.scrollY;
+                var currentSection = '';
+    
+                sections.forEach(section => {
+                    var sectionTop = section.offsetTop;
+                    var sectionHeight = section.offsetHeight;
+                    var sectionId = section.getAttribute('id');
+    
+                    if (scrollPosition >= sectionTop - header.offsetHeight && 
+                        scrollPosition < sectionTop + sectionHeight - header.offsetHeight) {
+                        currentSection = sectionId;
+                    }
+                });
+    
+                // Cambia el color de fondo del header según la sección visible
+                if (currentSection && currentSection !== 'home') {
+                    var section = document.getElementById(currentSection);
+                    var backgroundColor = getComputedStyle(section).backgroundColor;
+                    header.style.backgroundColor = backgroundColor;
+                    header.classList.add('scrolled');
+                } else {
+                    header.style.backgroundColor = 'transparent';
+                    header.classList.remove('scrolled');
+                }
+            }
+    
+            window.addEventListener('scroll', function() {
+                updateHeaderBackground();
+            });
+    
+            window.addEventListener('mousemove', function() {
+                if (window.scrollY > 50) { // Cambia 50 por el valor que prefieras
+                    header.classList.add('scrolled');
+                }
+            });
+    
+            // Agregar evento de clic al botón de carrito
+            const panelButton = document.querySelector('.cart-btn');
+            const panel = document.querySelector('.cart-panel');
+            const cartItemsList = document.querySelector('#cart-items');
+    
+            panelButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+            });
+    
+            document.addEventListener('click', (event) => {
+                if (!panel.contains(event.target) && !panelButton.contains(event.target)) {
+                    panel.style.display = 'none';
+                }
+            });
+    
+            // Agregar evento de clic al botón de agregar al carrito
+            const addToCartButton = document.querySelector('.add-to-cart-btn');
+            let cart = [];
+    
+            addToCartButton.addEventListener('click', () => {
+                // Agregar el producto al carrito
+                const product = {
+                    name: 'PanCakes',
+                    price: 700,
+                    quantity: 1
+                };
+    
+                // Verificar si el producto ya está en el carrito
+                const existingProduct = cart.find(item => item.name === product.name);
+    
+                if (existingProduct) {
+                    // Si el producto ya está en el carrito, incrementar la cantidad
+                    existingProduct.quantity++;
+                } else {
+                    // Si el producto no está en el carrito, agregarlo
+                    cart.push(product);
+                }
+    
+                // Actualizar la lista de productos en el carrito
+                updateCartList();
+            });
+    
+            // Agregar evento de clic al botón de vaciar carrito
+            const clearCartButton = document.querySelector('.clear-cart-btn');
+            clearCartButton.addEventListener('click', () => {
+                // Vaciar el carrito
+                cart = [];
+                updateCartList();
+            });
+    
+            // Agregar evento de clic al botón de comprar
+            const checkoutButton = document.querySelector('.checkout-btn');
+            checkoutButton.addEventListener('click', () => {
+                // Comprar los productos en el carrito
+                cart = [];
+                updateCartList();
+            });
+    
+            function updateCartList() {
+                // Limpiar la lista de productos en el carrito
+                cartItemsList.innerHTML = '';
+    
+                // Agregar los productos en el carrito a la lista
+                cart.forEach(product => {
+                    const cartItem = document.createElement('li');
+                    cartItem.textContent = `${product.quantity}x ${product.name}: $${product.price * product.quantity}`;
+                    cartItemsList.appendChild(cartItem);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
