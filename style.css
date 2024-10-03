@@ -376,21 +376,75 @@ header:hover {
 
 /* Ajustes para pantallas más pequeñas */
 @media (max-width: 768px) {
-    .about-container {
-        flex-direction: column;
-        text-align: center;
+    body {
+        font-size: 16px; /* Reduce el tamaño de la fuente */
     }
 
-    .about-text {
-        padding-right: 0;
+    header {
+        padding: 10px 20px; /* Reduce los márgenes laterales */
     }
 
-    .about-image {
-        margin-left: 0;
-        margin-top: 20px;
+    .navbar ul {
+        flex-direction: column; /* Menú de navegación en columna para móviles */
+        gap: 10px;
+    }
+
+    .product-container {
+        flex-direction: column; /* Cambia el diseño del producto en columna */
+        width: 90%; /* Ajusta el ancho al 90% de la pantalla */
+        margin: 20px auto; /* Centra el contenedor */
+    }
+
+    .product-image {
+        width: 100%; /* Imagen ocupará todo el ancho */
+        height: auto; /* Ajusta la altura de la imagen */
+    }
+
+    .product-info {
+        padding: 10px; /* Reduce el relleno en móviles */
+        width: 100%; /* Ancho completo */
+    }
+
+    .hero h1 {
+        font-size: 32px; /* Reduce el tamaño del título en móviles */
+    }
+
+    .hero p {
+        font-size: 16px; /* Reduce el tamaño del texto en móviles */
+    }
+
+    .cart-btn img {
+        width: 25px; /* Ajusta el tamaño del icono del carrito */
+        height: 25px;
     }
 }
 
+/* Media queries para pantallas muy pequeñas (celulares pequeños) */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px; /* Reduce el tamaño de la fuente aún más */
+    }
+
+    header {
+        padding: 10px 10px; /* Reduce el tamaño del padding */
+    }
+
+    .navbar ul {
+        gap: 5px; /* Reduce el espacio entre enlaces del menú */
+    }
+
+    .product-container {
+        width: 100%; /* Usa el 100% del ancho disponible */
+    }
+
+    .hero h1 {
+        font-size: 28px; /* Ajusta el tamaño del título */
+    }
+
+    .hero p {
+        font-size: 14px; /* Ajusta el tamaño del texto */
+    }
+}
 .productos-titulo {
     font-size: 36px; /* Ajusta el tamaño del texto */
     color: white; /* Color blanco */
